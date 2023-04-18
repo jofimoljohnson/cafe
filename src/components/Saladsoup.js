@@ -68,7 +68,7 @@ function Saladsoup() {
                                                     </div>
                                                 </Form.Label>
                                                 <Form.Label>
-                                                     
+                                                     availability
                                                 </Form.Label>
                                             </Form>
                                         </Col>
