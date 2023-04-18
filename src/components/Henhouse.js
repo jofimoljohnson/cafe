@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import FilteredDishes from "./FilteredDishes";
 import Card from "react-bootstrap/Card";
 // import {Col,Row} from 'react-bootstrap'
-import { Button, Row, Col, Container, Form, Image } from "react-bootstrap";
+import { Button, Row, Col, Container, Form, Image, FormLabel } from "react-bootstrap";
 import Header from "./Header";
 
 function Henhouse() {
@@ -93,12 +93,13 @@ function Henhouse() {
                                                         </button>
                                                     </div>
                                                 </Form.Label>
-                                                <Form.Label>availability</Form.Label>
+                                                <Form.Label>
                                                 {item.dish_Availability ? (
                                                     <Form.Label>dish is available</Form.Label>
                                                 ) : (
                                                     <Form.Label>dish is not available</Form.Label>
                                                 )}
+                                                </Form.Label>
                                             </Form>
                                         </Col>
                                         <Col align="center">

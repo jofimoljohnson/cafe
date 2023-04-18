@@ -17,23 +17,13 @@ function Header({quantity}) {
                          </Navbar.Text>
                      </Navbar.Collapse>
                  </Container>
-             </Navbar>
+                 <br />
+                 
+           </Navbar>
 
-       
-      {/* <Navbar bg="light" variant="light">
-        <Container>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to='/'><b>Salads and Soups</b></Nav.Link>
-            <Nav.Link as={Link} to='/barnyard'><b>From The Barnyard</b></Nav.Link>
-            <Nav.Link  as={Link} to='/henhouse' ><b>From The Hen House</b></Nav.Link>
-            <Nav.Link  as={Link} to='/freshsea'><b>Fresh From The Sea</b></Nav.Link>
+     
 
-          </Nav>
-        </Container>
-      </Navbar> */}
-
-
-       <nav class="navbar navbar-expand-lg navbar-light" bg="light" variant="light">
+       {/* <nav class="navbar navbar-expand-lg navbar-light" bg="light" variant="light">
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,8 +35,15 @@ function Header({quantity}) {
                 <li><Link to='/freshsea' class="nav-link  ">Fresh From The Sea</Link></li>
             </ul>
         </div>
-    </nav>
-    
+    </nav> */}
+
+       <div className='navbar' >
+        <Link className='nav' to='/'>Salads and Soups</Link>
+        <Link className='nav' to='/barnyard'>From The Barnyard</Link>
+        <Link className='nav' to='/henhouse'>From The Hen House</Link>
+        <Link className='nav' to='/freshsea'>Fresh From The Sea</Link>
+
+       </div>
       
     </div>
   )

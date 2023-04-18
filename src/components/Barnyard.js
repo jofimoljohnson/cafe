@@ -93,12 +93,13 @@ function Barnyard() {
                                                         </button>
                                                     </div>
                                                 </Form.Label>
-                                                <Form.Label>availability</Form.Label>
+                                                <Form.Label>
                                                 {item.dish_Availability ? (
                                                     <Form.Label>dish is available</Form.Label>
                                                 ) : (
                                                     <Form.Label>dish is not available</Form.Label>
                                                 )}
+                                                </Form.Label>
                                             </Form>
                                         </Col>
                                         <Col align="center">

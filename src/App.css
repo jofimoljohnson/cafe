@@ -41,6 +41,7 @@ form {
   justify-content: space-between;
   height: 100%;
   margin-top: 30px;
+  font-size: 10px;
 }
 
 .end{
@@ -52,12 +53,12 @@ form {
 }
 
 p{
-  font-size: 12px;
+  font-size: 9px;
 }
 
 img{
-  height: 120px;
-  width: 120px;
+  height: 90px;
+  width: 90px;
   border: 1px solid ;
 }
 
