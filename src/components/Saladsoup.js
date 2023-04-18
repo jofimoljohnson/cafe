@@ -1,17 +1,21 @@
+
 import React, { useState, useEffect } from "react";
 // import FilteredDishes from "./FilteredDishes";
 import Card from "react-bootstrap/Card";
 // import {Col,Row} from 'react-bootstrap'
 import { Button, Row, Col, Container, Form, Image } from "react-bootstrap";
+import Header from "./Header";
 
 function Saladsoup() {
     const [cafe, setCafe] = useState("");
     const [quantity, setQuantity] = useState(1);
 
-    const handleDecrement = () => {
-        setQuantity(quantity - 1);
+    const handleDecrement = (index) => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
     };
-    const handleIncrement = () => {
+    const handleIncrement = (index) => {
         setQuantity(quantity + 1);
     };
 
@@ -23,6 +27,7 @@ function Saladsoup() {
     useEffect(() => {
         fetchData();
     }, []);
+    console.log("cafe: ", cafe);
 
     const result = cafe && cafe[0].table_menu_list.filter((data) => data.menu_category === "Salads and Soup");
     //console.log("result: ", result && result[0].category_dishes.map((item) => item.dish_name));
@@ -31,17 +36,15 @@ function Saladsoup() {
     const dishesData = data && data.map((data) => data);
     console.log("dishesData: ", dishesData);
 
-
-
     return (
         <div>
             {/* <h1>testing</h1>
              <h1>{item && item.dish_name}</h1>
             <h1>{ item && item.dish_price}</h1> */}
-
+            <Header quantity={quantity} />
             {dishesData &&
-                dishesData.map((item) => {
-                                           
+                dishesData.map((item, index) => {
+                    console.log("index :", index);
                     return (
                         <div>
                             <Card>
@@ -61,15 +64,41 @@ function Saladsoup() {
                                                     <p>{item.dish_description}</p>
                                                 </Form.Label>
                                                 <Form.Label>
-                                                    <div className="input-group buttons" style={{ backgroundColor: "green", color: "white" }} >
-                                                        <button type="button" onClick={handleDecrement} className="input-group-text" style={{ backgroundColor: "green", color: "white" }}>-</button>
-                                                        <div className="form-control text-center"style={{ backgroundColor: "green", color: "white" }}>{quantity}</div>
-                                                        <button type="button" onClick={handleIncrement} className="input-group-text" style={{ backgroundColor: "green", color: "white" }}> + </button>
+                                                    <div
+                                                        className="input-group buttons"
+                                                        style={{ backgroundColor: "green", color: "white" }}
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDecrement(index)}
+                                                            className="input-group-text"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            -
+                                                        </button>
+                                                        <div
+                                                            className="form-control text-center"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            {quantity}
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleIncrement(index)}
+                                                            className="input-group-text"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            {" "}
+                                                            +{" "}
+                                                        </button>
                                                     </div>
                                                 </Form.Label>
-                                                <Form.Label>
-                                                     availability
-                                                </Form.Label>
+                                                <Form.Label>availability</Form.Label>
+                                                {item.dish_Availability ? (
+                                                    <Form.Label>dish is available</Form.Label>
+                                                ) : (
+                                                    <Form.Label>dish is not available</Form.Label>
+                                                )}
                                             </Form>
                                         </Col>
                                         <Col align="center">
@@ -96,10 +125,3 @@ function Saladsoup() {
 }
 
 export default Saladsoup;
-
-// {
-//     <h1>{item && item.dish_id}</h1>
-//                     <h1>{item && item.dish_name}</h1>
-//                     <img src={item.dish_image}  />
-//                     <h1>{item && item.dish_price}</h1> <br /><br />
-// }

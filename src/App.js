@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
      <Router> 
-     <Header/>
+     {/* <Header/> */}
 
       <Routes>
         <Route/>
@@ -31,3 +31,12 @@ function App() {
 }
 
 export default App;
+
+
+
+// {
+//     <h1>{item && item.dish_id}</h1>
+//                     <h1>{item && item.dish_name}</h1>
+//                     <img src={item.dish_image}  />
+//                     <h1>{item && item.dish_price}</h1> <br /><br />
+// }

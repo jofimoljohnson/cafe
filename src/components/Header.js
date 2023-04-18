@@ -1,7 +1,8 @@
+
 import React from 'react'
 import {Navbar,Container,Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-function Header() {
+function Header({quantity}) {
   return (
     <div>
          <Navbar bg="light" variant="light" w-100>
@@ -12,7 +13,7 @@ function Header() {
                      <Navbar.Toggle />
                      <Navbar.Collapse className="justify-content-end">
                          <Navbar.Text>
-                             My Orders &emsp;<i class="fa-solid fa-cart-shopping"></i>
+                             My Orders &emsp;<i style={{color:"red",fontSize:"25px"}} class="fa-solid fa-cart-shopping">{quantity}</i>
                          </Navbar.Text>
                      </Navbar.Collapse>
                  </Container>

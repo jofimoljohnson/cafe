@@ -1,12 +1,23 @@
-import React from 'react'
-import { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import { Button, Row, Col, Container, Form, Image } from "react-bootstrap";
 
+import React, { useState, useEffect } from "react";
+// import FilteredDishes from "./FilteredDishes";
+import Card from "react-bootstrap/Card";
+// import {Col,Row} from 'react-bootstrap'
+import { Button, Row, Col, Container, Form, Image } from "react-bootstrap";
+import Header from "./Header";
 
 function Henhouse() {
-  const [cafe, setCafe] = useState("");
+    const [cafe, setCafe] = useState("");
     const [quantity, setQuantity] = useState(1);
+
+    const handleDecrement = (index) => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+    const handleIncrement = (index) => {
+        setQuantity(quantity + 1);
+    };
 
     async function fetchData() {
         await fetch("https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099")
@@ -16,15 +27,7 @@ function Henhouse() {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(cafe);
-
-
-    const handleDecrement = () => {
-      setQuantity(quantity - 1);
-  };
-  const handleIncrement = () => {
-      setQuantity(quantity + 1);
-  };
+    console.log("cafe: ", cafe);
 
     const result = cafe && cafe[0].table_menu_list.filter((data) => data.menu_category === "From the Hen House");
     //console.log("result: ", result && result[0].category_dishes.map((item) => item.dish_name));
@@ -34,86 +37,91 @@ function Henhouse() {
     console.log("dishesData: ", dishesData);
 
     return (
-      <div>
-          {/* <h1>testing</h1>
-           <h1>{item && item.dish_name}</h1>
-          <h1>{ item && item.dish_price}</h1> */}
+        <div>
+            {/* <h1>testing</h1>
+             <h1>{item && item.dish_name}</h1>
+            <h1>{ item && item.dish_price}</h1> */}
+            <Header quantity={quantity} />
+            {dishesData &&
+                dishesData.map((item, index) => {
+                    console.log("index :", index);
+                    return (
+                        <div>
+                            <Card>
+                                <Container fluid className="containers">
+                                    <Row>
+                                        <Col align="center">
+                                            <Form className="firstform">
+                                                <Form.Label>
+                                                    <h5>{item.dish_name}</h5>
+                                                </Form.Label>
+                                                <Form.Label>
+                                                    <h6>
+                                                        {item.dish_currency} {item.dish_price}
+                                                    </h6>
+                                                </Form.Label>
+                                                <Form.Label>
+                                                    <p>{item.dish_description}</p>
+                                                </Form.Label>
+                                                <Form.Label>
+                                                    <div
+                                                        className="input-group buttons"
+                                                        style={{ backgroundColor: "green", color: "white" }}
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDecrement(index)}
+                                                            className="input-group-text"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            -
+                                                        </button>
+                                                        <div
+                                                            className="form-control text-center"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            {quantity}
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleIncrement(index)}
+                                                            className="input-group-text"
+                                                            style={{ backgroundColor: "green", color: "white" }}
+                                                        >
+                                                            {" "}
+                                                            +{" "}
+                                                        </button>
+                                                    </div>
+                                                </Form.Label>
+                                                <Form.Label>availability</Form.Label>
+                                                {item.dish_Availability ? (
+                                                    <Form.Label>dish is available</Form.Label>
+                                                ) : (
+                                                    <Form.Label>dish is not available</Form.Label>
+                                                )}
+                                            </Form>
+                                        </Col>
+                                        <Col align="center">
+                                            <Form className="middle">
+                                                <Form.Label>{item.dish_calories} calories</Form.Label>
+                                            </Form>
+                                        </Col>
 
-          {dishesData &&
-              dishesData.map((item) => {
-                  return (
-                      <div>
-                          <Card>
-                              <Container fluid className="containers">
-                                  <Row>
-                                      <Col align="center">
-                                          <Form className="firstform">
-                                              <Form.Label>
-                                                  <h5>{item.dish_name}</h5>
-                                              </Form.Label>
-                                              <Form.Label>
-                                                  <h6>
-                                                      {item.dish_currency} {item.dish_price}
-                                                  </h6>
-                                              </Form.Label>
-                                              <Form.Label>
-                                                  <p>{item.dish_description}</p>
-                                              </Form.Label>
-                                              <Form.Label>
-                                                  <div
-                                                      className="input-group buttons"
-                                                      style={{ backgroundColor: "green", color: "white" }}
-                                                  >
-                                                      <button
-                                                          type="button"
-                                                          onClick={handleDecrement}
-                                                          className="input-group-text"
-                                                          style={{ backgroundColor: "green", color: "white" }}
-                                                      >
-                                                          -
-                                                      </button>
-                                                      <div
-                                                          className="form-control text-center"
-                                                          style={{ backgroundColor: "green", color: "white" }}
-                                                      >
-                                                          {quantity}
-                                                      </div>
-
-                                                      <button
-                                                          type="button"
-                                                          onClick={handleIncrement}
-                                                          className="input-group-text"
-                                                          style={{ backgroundColor: "green", color: "white" }}
-                                                      >
-                                                          +
-                                                      </button>
-                                                  </div>
-                                              </Form.Label>
-                                          </Form>
-                                      </Col>
-                                      <Col align="center">
-                                          <Form className="middle">
-                                              <Form.Label>{item.dish_calories} calories</Form.Label>
-                                          </Form>
-                                      </Col>
-
-                                      <Col align="center">
-                                          <Form className="end">
-                                              <Form.Label>
-                                                  <img src={item.dish_image} alt="" />
-                                              </Form.Label>
-                                          </Form>
-                                      </Col>
-                                  </Row>
-                              </Container>
-                          </Card>
-                      </div>
-                  );
-              })}
-      </div>
-  );
+                                        <Col align="center">
+                                            <Form className="end">
+                                                <Form.Label>
+                                                    <img src={item.dish_image} alt="" />
+                                                </Form.Label>
+                                            </Form>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </Card>
+                        </div>
+                    );
+                })}
+        </div>
+    );
 }
 
-
-  
-export default Henhouse
+export default Henhouse;
