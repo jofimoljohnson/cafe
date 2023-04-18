@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Header() {
   return (
     <div>
-         <Navbar bg="light" variant="light">
+         <Navbar bg="light" variant="light" w-100>
               <Container>
                    <Navbar.Brand href="#home" style={{ fontSize: "30px" }}>
                          UNI Resto Cafe
