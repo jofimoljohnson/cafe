@@ -38,86 +38,75 @@ function Henhouse() {
 
     return (
         <div>
-            {/* <h1>testing</h1>
-             <h1>{item && item.dish_name}</h1>
-            <h1>{ item && item.dish_price}</h1> */}
             <Header quantity={quantity} />
             {dishesData &&
                 dishesData.map((item, index) => {
                     console.log("index :", index);
                     return (
                         <div>
-                            <Card>
-                                <Container fluid className="containers">
-                                    <Row>
-                                        <Col align="center">
-                                            <Form className="firstform">
-                                                <Form.Label>
-                                                    <h5>{item.dish_name}</h5>
-                                                </Form.Label>
-                                                <Form.Label>
-                                                    <h6>
-                                                        {item.dish_currency} {item.dish_price}
-                                                    </h6>
-                                                </Form.Label>
-                                                <Form.Label>
-                                                    <p>{item.dish_description}</p>
-                                                </Form.Label>
-                                                <Form.Label>
-                                                    <div
-                                                        className="input-group buttons"
-                                                        style={{ backgroundColor: "green", color: "white" }}
-                                                    >
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => handleDecrement(index)}
-                                                            className="input-group-text"
-                                                            style={{ backgroundColor: "green", color: "white" }}
-                                                        >
-                                                            -
-                                                        </button>
-                                                        <div
-                                                            className="form-control text-center"
-                                                            style={{ backgroundColor: "green", color: "white" }}
-                                                        >
-                                                            {quantity}
-                                                        </div>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => handleIncrement(index)}
-                                                            className="input-group-text"
-                                                            style={{ backgroundColor: "green", color: "white" }}
-                                                        >
-                                                            {" "}
-                                                            +{" "}
-                                                        </button>
-                                                    </div>
-                                                </Form.Label>
-                                                <Form.Label>
-                                                {item.dish_Availability ? (
-                                                    <Form.Label>dish is available</Form.Label>
-                                                ) : (
-                                                    <Form.Label>dish is not available</Form.Label>
-                                                )}
-                                                </Form.Label>
-                                            </Form>
-                                        </Col>
-                                        <Col align="center">
-                                            <Form className="middle">
-                                                <Form.Label>{item.dish_calories} calories</Form.Label>
-                                            </Form>
-                                        </Col>
+                            <Container fluid className="containers">
+                                <Row>
+                                    <Col className="start">
+                                        <h5>{item.dish_name}</h5>
+                                        <h6>
+                                            {item.dish_currency} {item.dish_price}
+                                        </h6>
+                                        <p>{item.dish_description}</p>
+                                        <Form.Label>
+                                            <div
+                                                className="input-group buttons"
+                                                style={{ backgroundColor: "green", color: "white" }}
+                                            >
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDecrement(index)}
+                                                    className="input-group-text"
+                                                    style={{ backgroundColor: "green", color: "white" }}
+                                                >
+                                                    -
+                                                </button>
+                                                <div
+                                                    className="form-control text-center"
+                                                    style={{ backgroundColor: "green", color: "white", width: "10px" }}
+                                                >
+                                                    {quantity}
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleIncrement(index)}
+                                                    className="input-group-text"
+                                                    style={{ backgroundColor: "green", color: "white" }}
+                                                >
+                                                    {" "}
+                                                    +{" "}
+                                                </button>
+                                            </div>
+                                        </Form.Label>
 
-                                        <Col align="center">
-                                            <Form className="end">
-                                                <Form.Label>
-                                                    <img src={item.dish_image} alt="" />
-                                                </Form.Label>
-                                            </Form>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </Card>
+                                        <h6>
+                                            {" "}
+                                            {item.dish_Availability ? (
+                                                <Form.Label>dish is available</Form.Label>
+                                            ) : (
+                                                <Form.Label>dish is not available</Form.Label>
+                                            )}
+                                        </h6>
+                                    </Col>
+
+
+                                    <Col className='middle'>
+                                        <h6>{item.dish_calories} calories</h6>
+                                    </Col>
+
+
+                                    <Col className='end'>
+                                    <img src={item.dish_image} alt="" />
+                                    </Col>
+
+
+
+                                </Row>
+                            </Container>
                         </div>
                     );
                 })}

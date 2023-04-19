@@ -2,6 +2,10 @@
 import React from 'react'
 import {Navbar,Container,Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+
 function Header({quantity}) {
   return (
     <div>
@@ -38,12 +42,14 @@ function Header({quantity}) {
     </nav> */}
 
        <div className='navbar' >
-        <Link className='nav' to='/'>Salads and Soups</Link>
-        <Link className='nav' to='/barnyard'>From The Barnyard</Link>
-        <Link className='nav' to='/henhouse'>From The Hen House</Link>
-        <Link className='nav' to='/freshsea'>Fresh From The Sea</Link>
+   
+                    <Link className='nav' to='/'>Salads and Soups</Link>
+                    <Link className='nav' to='/barnyard'>From The Barnyard</Link>
+                    <Link className='nav' to='/henhouse'>From The Hen House</Link>
+                    <Link className='nav' to='/freshsea'>Fresh From The Sea</Link>
+     </div>
 
-       </div>
+
       
     </div>
   )
